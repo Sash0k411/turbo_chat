@@ -22,13 +22,8 @@
                 </a>
               </div>
               <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-4">
-                  <% if current_user.present? %>
-                    <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
-                  <% else %>
-                    <%= link_to 'Sign in', new_user_session_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %>
-                    <%= link_to 'Sign up', new_user_registration_path, class: 'text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium' %>
-                  <% end %>
+                <div class="ml-10 flex items-baseline space-x-4" >
+                  <p>Turbo Chat</p>
                 </div>
               </div>
             </div>
@@ -37,12 +32,7 @@
 
         <div class="md:hidden" id="mobile-menu">
           <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <% if current_user.present? %>
-              <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-            <% else %>
-              <%= link_to "Sign in", new_user_session_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-              <%= link_to "Sign up", new_user_registration_path, class: "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" %>
-            <% end %>
+            <p>Mobile turbo chat</p>
           </div>
         </div>
       </nav>

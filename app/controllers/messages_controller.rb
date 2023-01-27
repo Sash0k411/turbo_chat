@@ -1,11 +1,13 @@
 class MessagesController < ApplicationController
 
   def create
-    @new_message = current_user.messages.build(strong_params)
+    if Message.present?
+      @new_message = Message.new(strong_params)
 
-    if @new_message.save
-      room = @new_message.room
-      @new_message.broadcast_append_to room, target: "room_#{room.id}_messages", locals: { user: current_user }
+      if @new_message.save
+        room = @new_message.room
+        @new_message.broadcast_append_to room, target: "room_#{room.id}_messages"
+      end
     end
   end
 
