@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.2"
+ruby "3.0.1"
 
 gem "rails", "~> 7.0.4", ">= 7.0.4.1"
 
@@ -14,6 +14,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "cssbundling-rails"
 gem "redis", "~> 4.0"
+
 
 group :development, :test do
   gem "pry-rails"

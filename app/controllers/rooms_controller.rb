@@ -1,7 +1,6 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.all
-    @new_room = Room.new
   end
 
   def show
@@ -11,10 +10,11 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @new_room = Room.new
+    @new_room = Room.new(title: params[:title])
 
-    if @new_room.save
+     if @new_room.save
       @new_room.broadcast_append_to :rooms
-    end
+     end
   end
+
 end
