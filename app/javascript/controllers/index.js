@@ -1,4 +1,4 @@
 import { application } from "./application"
+import { ChatController } from "./chat_controller"
 
-import ChatRefreshController from "./chat_refresh_controller"
-application.register("chat_refresh", ChatRefreshController)
+application.register("chat_refresh", ChatController)

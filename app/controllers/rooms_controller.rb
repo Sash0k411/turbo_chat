@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
     if @new_room.save
       @new_room.broadcast_append_to :rooms
     else
-      @errors = @new_message.errors
+      @errors = @new_room.errors.any?
     end
   end
 end

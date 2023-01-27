@@ -3,10 +3,9 @@ class MessagesController < ApplicationController
     @new_message = Message.new(message_params)
 
     if @new_message.save
-      room = @new_message.room
-      @new_message.broadcast_append_to room, target: @room.channel_id
+      @new_message.broadcast_append_to @new_message.room, target: @new_message.room.channel_id
     else
-      redirect_to :back, flash.alert = 'Message empty.'
+      @errors = @new_message.errors.any?
     end
   end
 
