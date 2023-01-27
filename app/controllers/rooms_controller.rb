@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
     if @new_room.save
       @new_room.broadcast_append_to :rooms
     else
-      redirect_to :back, flash.alert = 'Room empty.'
+      @errors = @new_message.errors
     end
   end
 end
