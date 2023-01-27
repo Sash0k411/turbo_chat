@@ -12,9 +12,10 @@ class RoomsController < ApplicationController
   def create
     @new_room = Room.new(title: params[:title])
 
-     if @new_room.save
+    if @new_room.save
       @new_room.broadcast_append_to :rooms
-     end
+    else
+      redirect_to :back, flash.alert = 'Room empty.'
+    end
   end
-
 end
