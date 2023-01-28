@@ -1,12 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 import { cable } from "@hotwired/turbo-rails"
 import { beep } from "./utils";
-import {highlightElement} from "./utils";
+import { highlightElement } from "./utils";
 
 export class ChatController extends Controller {
     connect() {
         this.subscribe()
         this.scroll()
+
+    }
+
+    clearInput() {
+        this.element.reset()
     }
 
     subscribe() {
@@ -16,13 +21,13 @@ export class ChatController extends Controller {
         const reaction = this.reaction;
 
         this.channel = cable.subscribeTo(
-            {
-                channel: channelName,
-                signed_stream_name: signedStreamName
-            },
-            {
-                received (data) { setTimeout(scroll, 500) }
-            }
+          {
+              channel: channelName,
+              signed_stream_name: signedStreamName,
+          },
+          {
+                received (data) { setTimeout(reaction, 500) }
+          }
         )
     }
 
@@ -30,7 +35,6 @@ export class ChatController extends Controller {
         this.scroll();
         this.highlight();
         beep();
-
     }
 
     scroll = () => {
@@ -41,6 +45,8 @@ export class ChatController extends Controller {
     highlight = () => {
         const messages = document.getElementsByClassName("js-message");
         const lastMessage = messages[messages.length-1];
-        hightlightElement(lastMessage);
+        highlightElement(lastMessage);
+        console.log('123')
     }
 }
+
