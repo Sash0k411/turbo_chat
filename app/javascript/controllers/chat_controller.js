@@ -7,11 +7,6 @@ export class ChatController extends Controller {
     connect() {
         this.subscribe()
         this.scroll()
-
-    }
-
-    clearInput() {
-        this.element.reset()
     }
 
     subscribe() {
@@ -31,6 +26,10 @@ export class ChatController extends Controller {
         )
     }
 
+    clearInput() {
+        this.element.reset()
+    }
+
     reaction = () => {
         this.scroll();
         this.highlight();
@@ -46,7 +45,5 @@ export class ChatController extends Controller {
         const messages = document.getElementsByClassName("js-message");
         const lastMessage = messages[messages.length-1];
         highlightElement(lastMessage);
-        console.log('123')
     }
 }
-

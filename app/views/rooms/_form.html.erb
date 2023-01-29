@@ -1,4 +1,16 @@
-<%= form_with model: @new_room, class: "mt-4" do |f| %>
+<% if @errors %>
+  <div class="d-block">
+    <% @errors.full_messages_for(:body).each do |error_message| %>
+      <%= error_message %>.
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_with model: @new_room, class: "mt-4",
+              data: { controller: :chat_refresh,
+                      action: "turbo:submit-end->chat_refresh#clearInput"
+              }  do |f| %>
+
   <div class="flex flex-row">
     <%= f.text_field :title, class: 'border', required: true %>
     <%= f.submit "Create room", class: "group relative w-full flex justify-center py-2

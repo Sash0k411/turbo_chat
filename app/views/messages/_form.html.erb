@@ -7,7 +7,10 @@
 <% end %>
 
 <%= form_with model: @new_message,
-              data: { controller: "chat_refresh", action: "turbo:submit-end->chat_refresh#clearInput" } do |f| %>
+              data: { controller: :chat_refresh,
+                      action: "turbo:submit-end->chat_refresh#clearInput"
+              } do |f| %>
+
   <div class="rounded-md shadow-sm -space-y-px">
     <%= f.text_field :body,
                      autofocus: true,
